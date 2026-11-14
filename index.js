@@ -65,35 +65,35 @@
         ],
         personalImages: [
           {
-            src: "/assets/images/hkt.jpg",
+            src: "assets/images/hkt.jpg",
             alt: "A city or street scene captured in everyday life.",
           },
           {
-            src: "/assets/images/vball.jpg",
+            src: "assets/images/vball.jpg",
             alt: "A candid photo showing a recreational group activity.",
           },
           {
-            src: "/assets/images/team.jpg",
+            src: "assets/images/team.jpg",
             alt: "A photo of a group of people together.",
           },
           {
-            src: "/assets/images/rs.jpeg",
+            src: "assets/images/rs.jpeg",
             alt: "A close-up portrait in a relaxed setting.",
           },
           {
-            src: "/assets/images/river.jpg",
+            src: "assets/images/river.jpg",
             alt: "A scenic landscape photo with a river and natural surroundings.",
           },
           {
-            src: "/assets/images/peak2.jpg",
+            src: "assets/images/peak2.jpg",
             alt: "A mountain landscape image with wider outdoor scenery.",
           },
           {
-            src: "/assets/images/peak.jpg",
+            src: "assets/images/peak.jpg",
             alt: "A highland photo showing open terrain and a scenic outdoors setting.",
           },
           {
-            src: "/assets/images/hkdl.jpg",
+            src: "assets/images/hkdl.jpg",
             alt: "A casual image that fits a personal photo journal.",
           },
         ],
@@ -104,7 +104,6 @@
             href: "https://www.linkedin.com/in/ronwell-carcer-b3aa28269/",
           },
           { label: "Email", href: "mailto:carcerronwell@gmail.com" },
-          { label: "Résumé", href: "/Ronwell-Marc-Carcer-Resume.pdf" },
         ],
         contact: [
           {
@@ -476,9 +475,9 @@
       const themes = ["paper", "signal", "grove"];
       const themeNames = { paper: "Paper", signal: "Signal", grove: "Grove" };
       const faviconPathByTheme = {
-        paper: "/assets/favicons/paper.png",
-        signal: "/assets/favicons/signal.png",
-        grove: "/assets/favicons/grove.png",
+        paper: "assets/favicons/paper.png",
+        signal: "assets/favicons/signal.png",
+        grove: "assets/favicons/grove.png",
       };
       const themeButton = document.querySelector("[data-theme-toggle]");
       const themeFavicon = document.querySelector('link[rel="icon"]');
