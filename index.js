@@ -28,7 +28,7 @@
           {
             text: "Previously, I was an ",
             linkLabel: "IT and Project Design Intern",
-            href: "#work",
+            href: "work.html",
             after:
               " at the City Government of Calamba, where I supported website planning, documentation, coordination, and technical processes.",
           },
@@ -61,6 +61,24 @@
             description:
               "Developed an application for browsing and managing e-book information using Laravel, MySQL, and database operations.",
             stack: "Laravel · PHP · MySQL · HTML / CSS",
+          },
+        ],
+        watchHistory: [
+          {
+            title: "Hungergames: Mockingjay Part 2",
+            year: 2015,
+          },
+          {
+            title: "People we meet on vacation",
+            year: 2026,
+          },
+          {
+            title: "How to lose a guy in 10 days",
+            year: 2003,
+          },
+          {
+            title: "The Hobbit - An Unexpected Journey",
+            year: 2012,
           },
         ],
         personalImages: [
@@ -104,6 +122,7 @@
             href: "https://www.linkedin.com/in/ronwell-carcer-b3aa28269/",
           },
           { label: "Email", href: "mailto:carcerronwell@gmail.com" },
+          { label: "Resume", href: "assets/documents/resume.pdf" },
         ],
         contact: [
           {
@@ -161,6 +180,64 @@
           if (item.href.startsWith("http")) {
             link.target = "_blank";
             link.rel = "noreferrer";
+          }
+        });
+      }
+
+      const watchHistoryTrigger = document.querySelector(
+        "[data-watch-history-trigger]",
+      );
+      const watchHistoryDialog = document.querySelector("#watch-history-dialog");
+      const watchHistoryList = document.querySelector("#watch-history-list");
+      const watchHistoryCount = document.querySelector("#watch-history-count");
+      const latestWatchTitle = document.querySelector(
+        "[data-latest-watch-title]",
+      );
+      if (
+        watchHistoryTrigger &&
+        watchHistoryDialog &&
+        watchHistoryList &&
+        watchHistoryCount &&
+        latestWatchTitle
+      ) {
+        const latestWatch = portfolio.watchHistory[0];
+        if (latestWatch) {
+          latestWatchTitle.textContent =
+            `${latestWatch.title} (${latestWatch.year})`;
+        }
+        const entryCount = portfolio.watchHistory.length;
+        watchHistoryCount.textContent =
+          `${String(entryCount).padStart(2, "0")} ${entryCount === 1 ? "entry" : "entries"}`;
+
+        portfolio.watchHistory.forEach((watch, index) => {
+          const item = createElement("li", "watch-history-item");
+          const year = createElement(
+            "time",
+            "watch-history-year",
+            String(watch.year),
+          );
+          year.dateTime = String(watch.year);
+          item.append(
+            createElement(
+              "span",
+              "watch-history-index",
+              String(index + 1).padStart(2, "0"),
+            ),
+            createElement("span", "watch-history-name", watch.title),
+            year,
+          );
+          watchHistoryList.append(item);
+        });
+
+        watchHistoryTrigger.addEventListener("click", () => {
+          watchHistoryDialog.showModal();
+        });
+        document
+          .querySelector("[data-watch-history-close]")
+          ?.addEventListener("click", () => watchHistoryDialog.close());
+        watchHistoryDialog.addEventListener("click", (event) => {
+          if (event.target === watchHistoryDialog) {
+            watchHistoryDialog.close();
           }
         });
       }

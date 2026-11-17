@@ -46,7 +46,9 @@
 
     <main id="top" class="page-shell">
       <section class="intro-section" aria-labelledby="intro-title">
-        <p class="small-label">Ronwell Marc Carcer |</p>
+        <p class="small-label">
+          Ronwell Marc Carcer<span class="typing-cursor" aria-hidden="true">|</span>
+        </p>
         <div class="intro-copy" id="intro-copy"></div>
         <div
           class="social-links"
@@ -78,7 +80,7 @@
           <div class="now-heading">
             <div class="now-title">
               <span>01</span>
-              <h2 id="work-title">Now</h2>
+              <h2 id="work-title">now</h2>
             </div>
             <p class="now-meta">
               updated <time datetime="2026-11">Nov 2026</time>
@@ -94,8 +96,21 @@
               <span class="now-value"><a href="#">Portfolio content</a></span>
             </div>
             <div class="now-item">
-              <span class="now-key">last watched</span>
-              <span class="now-value"><a href="#">The Hobbit - An Unexpected Journey (2012)</a></span>
+              <div class="watch-history-meta">
+                <span class="now-key">last watched</span>
+                <button
+                  class="watch-history-recent watch-history-trigger"
+                  type="button"
+                  data-watch-history-trigger
+                  aria-haspopup="dialog"
+                  aria-controls="watch-history-dialog"
+                >
+                  recently watched
+                </button>
+              </div>
+              <span class="now-value" data-latest-watch-title>
+                Hungergames: Mockingjay Part 2 (2015)
+              </span>
             </div>
             <div class="now-item">
               <span class="now-key">studying</span>
@@ -112,7 +127,7 @@
       >
         <div class="section-heading">
           <span>03</span>
-          <h2 id="personal-title">A little more</h2>
+          <h2 id="personal-title">a little more</h2>
           <a href="https://www.instagram.com/rmcarcer__/" class="personal-social" target="_blank" rel="noreferrer">
             <span>@rmcarcer__</span>
           </a>
@@ -132,7 +147,7 @@
       >
         <div class="section-heading">
           <span>04</span>
-          <h2 id="contact-title">Say hello</h2>
+          <h2 id="contact-title">say hello</h2>
         </div>
         <p class="now-lead contact-lead">
           If you’d like to talk about a project, an opportunity, or anything I’m
@@ -141,6 +156,39 @@
         <div class="contact-list" id="contact-list"></div>
       </section>
     </main>
+
+    <dialog
+      class="watch-history-dialog"
+      id="watch-history-dialog"
+      aria-labelledby="watch-history-title"
+    >
+      <div class="watch-modal-panel">
+        <header class="watch-modal-header">
+          <div class="watch-modal-heading">
+            <div class="modal-title-row">
+              <p class="modal-eyebrow" id="watch-history-title">Recently Watched</p>
+              <span class="watch-count" id="watch-history-count"></span>
+            </div>
+          </div>
+          <button
+            class="modal-close"
+            type="button"
+            data-watch-history-close
+            aria-label="Close watch history"
+          >
+            ×
+          </button>
+        </header>
+        <ol
+          class="watch-history-list"
+          id="watch-history-list"
+          aria-label="Watch history entries"
+        ></ol>
+        <footer class="watch-modal-footer">
+          <span>last updated <time datetime="2026-11">Nov 2026</time></span>
+        </footer>
+      </div>
+    </dialog>
 
     <footer class="site-footer">
       <p class="footer-copyright">
