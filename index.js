@@ -63,7 +63,53 @@
             stack: "Laravel · PHP · MySQL · HTML / CSS",
           },
         ],
+        workExperience: {
+          introduction: "Places I’ve worked, supported, and learned from.",
+          organization: "City Government of Calamba",
+          dates: "Dec 2025 – Feb 2026",
+          role: "IT and Project Design Intern",
+          description:
+            "Supported website planning, project documentation, coordination, and day-to-day technical processes for the City Government of Calamba.",
+          extendedDescription:
+            "The internship involved supporting website planning, documentation, coordination, and technical processes within the City Government of Calamba.",
+          metadata: [
+            "website planning",
+            "documentation",
+            "coordination",
+            "technical support",
+          ],
+        },
+        workImages: [
+          {
+            src: "assets/images/intern2.jpg",
+            alt: "Attendees seated around a conference table.",
+          },
+          {
+            src: "assets/images/intern3.jpg",
+            alt: "Two people seated at a computer workstation in an office.",
+          },
+          {
+            src: "assets/images/intern5.jpeg",
+            alt: "A group of runners in yellow jerseys at an outdoor event.",
+          },
+          {
+            src: "assets/images/intern6.jpeg",
+            alt: "A group of runners in blue jerseys at an outdoor event.",
+          },
+          {
+            src: "assets/images/intern4.jpg",
+            alt: "A laptop displaying a software development workspace.",
+          },
+        ],
         watchHistory: [
+          {
+            title: "Fast Five",
+            year: 2012,
+          },
+          {
+            title: "The Hunger Games: Sunrise on the Reaping",
+            year: 2026,
+          },
           {
             title: "Hungergames: Mockingjay Part 2",
             year: 2015,
@@ -182,6 +228,70 @@
             link.rel = "noreferrer";
           }
         });
+      }
+
+      const workIntro = document.querySelector("#work-intro-copy");
+      const workExperienceList = document.querySelector("#work-experience");
+      if (workIntro && workExperienceList) {
+        const experience = portfolio.workExperience;
+        workIntro.textContent = experience.introduction;
+
+        const entry = createElement("article", "work-entry");
+        const marker = createElement("span", "work-entry-index");
+        marker.setAttribute("aria-hidden", "true");
+        entry.append(marker);
+
+        const main = createElement("div", "work-entry-main");
+        main.append(
+          createElement(
+            "p",
+            "work-entry-organization",
+            experience.organization,
+          ),
+          createElement("h3", "work-entry-role", experience.role),
+          createElement(
+            "p",
+            "work-entry-description",
+            experience.description,
+          ),
+          createElement(
+            "p",
+            "work-entry-extended",
+            experience.extendedDescription,
+          ),
+        );
+
+        const metadata = createElement("div", "work-entry-tags");
+        experience.metadata.forEach((item) => {
+          metadata.append(createElement("span", "", item));
+        });
+        main.append(metadata);
+
+        entry.append(
+          main,
+          createElement("p", "work-entry-dates", experience.dates),
+        );
+
+        if (portfolio.workImages.length > 0) {
+          const gallery = createElement("section", "work-gallery");
+          gallery.setAttribute("aria-label", "Internship work images");
+          gallery.setAttribute("tabindex", "0");
+          portfolio.workImages.forEach((image) => {
+            const figure = createElement("figure", "work-image");
+            const imageElement = document.createElement("img");
+            imageElement.src = image.src;
+            imageElement.alt = image.alt;
+            imageElement.loading = "lazy";
+            figure.append(imageElement);
+            if (image.caption) {
+              figure.append(createElement("figcaption", "", image.caption));
+            }
+            gallery.append(figure);
+          });
+          entry.append(gallery);
+        }
+
+        workExperienceList.append(entry);
       }
 
       const watchHistoryTrigger = document.querySelector(
